@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Select a year from the list.</p>
+
+<select id="mySelect" onchange="myFunction()">
+  <option value="2003">2003</option>
+  <option value="2004">2004</option>
+  <option value="2005">2005</option>
+  <option value="2006">2006</option>
+  <option value="2007">2007</option>
+  <option value="2008">2008</option>
+  <option value="2009">2009</option>
+  <option value="2010">2010</option>
+  <option value="2011">2011</option>
+  <option value="2012">2012</option>
+  <option value="2013">2013</option>
+  <option value="2014">2014</option>
+  <option value="2015">2015</option>
+  <option value="2016">2016</option>
+  <option value="2017">2017</option>
+  <option value="2018">2018</option>
+  <option value="2019" selected>2019</option>
+</select>
+
+<p>When you select a year, a function is triggered which outputs the value of the selected year.</p>
+
+
+<script>
+    window.onload = function () {
+        myFunction();
+    }
+</script>
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+
+  for (year = 2003; year <= 2019; year++) {
+    vis = (year == x) ? "block" : "none";
+    document.getElementById(year).style.display = vis;
+  }
+}
+</script>
+
+<span id="2003">
+2003
+</span>
+<div id="2004">
+2004
+</div>
+<span id="2005">
+2005
+</span>
+<div id="2006">
+2006
+</div>
+<div id="2007">
+2007
+</div>
+<div id="2008">
+2008
+</div>
+<div id="2009">
+2009
+</div>
+<div id="2010">
+2010
+</div>
+<div id="2011">
+2011
+</div>
+<div id="2012">
+2012
+</div>
+<div id="2013">
+2013
+</div>
+<div id="2014">
+2014
+</div>
+<div id="2015">
+2015
+</div>
+<div id="2016">
+2016
+</div>
+<div id="2017">
+2017
+</div>
+<div id="2018">
+2018
+</div>
+<div id="2019">
+2019
+</div>
+
+
+</body>
+</html>
