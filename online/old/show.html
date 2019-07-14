@@ -1,0 +1,97 @@
+﻿
+<!-- Copyright: File Under Ska, Peter Schabert -->
+
+<html>
+
+<head>
+<link rel="stylesheet" href="ska.css">
+<script language="JavaScript" type="text/javascript">
+
+function buildImglink( )
+{
+  // aufruf mit show.html?bildnr&verzeichnisname
+
+  var l = location.href;
+  var pos1 = l.indexOf('?');
+  var pos2 = l.indexOf('&');
+  var imgName = l.substring(pos1+1, pos2);
+  var dirName = l.substring(pos2+1, l.length);
+  //alert( imgName );
+  //alert( dirName );
+
+  bildtag = "<img src='Concerts//"+dirName+"//P"+imgName+".JPG' alt='ENDE'>";
+  document.write( bildtag );
+}
+
+function buildForwardLink( )
+{
+  var l = location.href;
+  var pos1 = l.indexOf('?');
+  var pos2 = l.indexOf('&');
+  var imgName = l.substring(pos1+1, pos2);
+  var dirName = l.substring(pos2+1, l.length);
+
+  imgName = eval(imgName)+1;
+  bildtag = "<a href='show.html?"+imgName+"&"+dirName+"'>next</a>";
+  document.write( bildtag );
+}
+
+function buildBackLink( )
+{
+  var l = location.href;
+  var pos1 = l.indexOf('?');
+  var pos2 = l.indexOf('&');
+  var imgName = l.substring(pos1+1, pos2);
+  var dirName = l.substring(pos2+1, l.length);
+
+  imgName = eval(imgName)-1;
+  bildtag = "<a href='show.html?"+imgName+"&"+dirName+"'>back</a>";
+  document.write( bildtag );
+}
+
+function showThumbs( )
+{
+  var l = location.href;
+  var pos1 = l.indexOf('?');
+  var pos2 = l.indexOf('&');
+  var dirName = l.substring(pos1+1, pos2);
+  var rest = l.substring(pos2+1, l.length);
+  pos1 = rest.indexOf('&');
+  var startNr = rest.substring( 0, pos1 );
+  var endNr = rest.substring( pos1+1, rest.length );
+
+  for( i=eval(startNr); i<=eval(endNr); i++ )
+  {  
+	  //bildtag = "<a href='Concerts/"+dirName+"/P"+i+".JPG'><img src='Concerts/"+dirName+"/thumbs/P"+i+".JPG' border=0></a> &nbsp;";
+	  bildtag = "<a href=javascript:ow('Concerts/"+dirName+"/P"+i+".JPG')><img src='Concerts/"+dirName+"/thumbs/P"+i+".JPG' border=0></a> &nbsp;";
+	  document.write( bildtag );
+  }
+}
+
+function ow(url)
+{
+    fenster=window.open(url,'Popup','width=480,height=360')
+    fenster.focus()
+}
+
+</script>
+</head>
+
+<body>
+<center>
+<script language="JavaScript" type="text/javascript">showThumbs()</script>
+<p>
+<a href="bilder.html">zurück</a>
+</center>
+
+<!--
+<center>
+<script language="JavaScript" type="text/javascript">buildImglink()</script>
+<p>
+<script language="JavaScript" type="text/javascript">buildBackLink()</script>&nbsp;&nbsp;&nbsp;
+<script language="JavaScript" type="text/javascript">buildForwardLink()</script>
+</center>
+-->
+</body>
+
+</html>

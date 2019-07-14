@@ -1,0 +1,66 @@
+﻿
+/********************************
+css for "file under ska"
+*********************************/
+
+body
+{  
+    text-decoration: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color: #FFFFFF;    
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/** link **/
+a
+{
+    text-decoration: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #8F0A01;
+}
+
+/** link: mouse over **/
+a:hover
+{
+    text-decoration: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #FF3000;
+}
+
+
+/** link: last clicked **/
+a:active
+{
+    text-decoration: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #ff8040;
+}
+
+
+/** text inside tables **/
+td
+{
+    text-decoration: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 14px;
+	font-weight: bold;
+    }
+
+/** headline... noch nich verwendet, kann mit <span class="headline"> benutzt werden. (pepe) **/
+.headline
+{
+    text-decoration: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #6B0A01;
+    font-size: 16px;
+    font-weight: bold;	
+}
+
+/** background of head frame **/
+.headbg
+{
+    background-color: #FFFFFF;    
+}

@@ -1,0 +1,275 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Ska Radios</title>
+<script type="text/javascript">
+var days = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+var months = new Array("January", "February", "March", "April", "Mai", "June", "July", "August", "September", "Oktober", "November", "December");
+
+function go() {
+  var current = new Date();
+  document.getElementById('current').innerHTML = formatDate(current.getDay(), current.getDate(), current.getMonth(), current.getFullYear(), current.getHours(), current.getMinutes(), current.getSeconds()) + formatWeekInMonth(formatOrdinal(whichWeek(current.getDate())), current.getDay());
+  document.getElementById('uct').innerHTML = formatDate(current.getUTCDay(), current.getUTCDate(), current.getUTCMonth(), current.getUTCFullYear(), current.getUTCHours(), current.getUTCMinutes(), current.getUTCSeconds()) + formatWeekInMonth(formatOrdinal(whichWeek(current.getDate())), current.getDay());
+  // hours are CET times!
+  document.getElementById('skapatrol').innerHTML = calcInnerHTML(1, 21, 23, 1, 1, 1, 1, 1);
+  document.getElementById('ckut').innerHTML = calcInnerHTML(3, 4, 6, 1, 1, 1, 1, 1);
+  document.getElementById('rd').innerHTML = calcInnerHTML(3, 22, 23, 1 ,1 ,1 ,1 ,1);//Wednesday
+  document.getElementById('fus').innerHTML = calcInnerHTML(5, 20, 21, 1, 0, 1, 1, 1);//Friday
+  document.getElementById('citr').innerHTML = calcInnerHTML(5, 19, 21, 1, 0, 1, 1, 1);//Friday
+  document.getElementById('freedom').innerHTML = calcInnerHTML(0, 22, 23, 0, 1, 0, 1, 0);
+  setTimeout("go()", 1000);
+}
+
+function calcInnerHTML(day, startHour, endHour, one, two, three, four, five) {
+  var weeks = new Array(one, two, three, four, five);
+  var now = new Date();
+  var nowDay = now.getUTCDay();
+  var nowHour = now.getUTCHours()+1;
+  var nowMinutes = now.getUTCMinutes();
+  var nowSeconds = now.getUTCSeconds();
+  var nowDateX = now.getDay();
+  // is the show on now?
+  if ((nowDay == day) && (nowHour >= startHour) && (nowHour < endHour)) {
+    thisWeek = whichWeek(nowDateX);
+   // if(weeks[thisWeek] == 1) {
+        return '<span><b>now playing!</b></span>';
+   // }
+  }
+
+  secondsLeft = 60 - nowSeconds;
+  if (secondsLeft == 60) {
+    secondsLeft = 0;
+  } else {
+    nowMinutes +=1;
+  }
+
+  minutesLeft = 60 - nowMinutes;
+  if (minutesLeft == 60) {
+    minutesLeft = 0;
+    //nowHour +=1;
+ // } else {
+    }
+
+  daysLeft = day - nowDay;
+    if (daysLeft < 0) {
+      daysLeft += 7;
+    }
+
+  hoursLeft = startHour - nowHour - 1;
+  if (hoursLeft < 0) {
+    hoursLeft += 24;
+    // daysLeft -= 1;
+  }
+  //return 'startHour='+startHour+', nowHour='+nowHour;
+  //return 'nowDay='+nowDay+', day='+day+", daysLeft="+daysLeft;
+  //return 'day='+day+'nowDay='+nowDay+'nowHour='+nowHour + 'startHour='+startHour+'endHour='+endHour+formatRestDate(daysLeft, hoursLeft, minutesLeft, secondsLeft);
+  return formatRestDate(daysLeft, hoursLeft, minutesLeft, secondsLeft);
+}
+
+function formatRestDate(days, hours, minutes, seconds) {
+  text = '';
+  if (days == 1) {
+    text =  "1 day, ";
+  } else if (days > 1) {
+    text += days + " days, ";
+  }
+  text += hours + ':'
+  if(minutes < 10) { text += "0";}
+  text += minutes + ':'
+  if(seconds < 10) { text += "0";}
+  text  += seconds;
+  return text;
+}
+
+function formatDate(day, date, month, year, hour, minute, second) {
+  text = days[day] + ', ' + date + '. ' + months[month] + ' ' + year + ', ';
+  if(hour < 10) { text += "0";}
+  text += hour + ':'
+  if(minute < 10) { text += "0";}
+  text += minute + ':'
+  if(second < 10) { text += "0";}
+  text  += second;
+  return text;
+}
+
+function whichWeek(day) {
+  if(day < 8) {
+    return 1;
+  }
+  if(day < 15) {
+    return 2;
+  }
+  if(day < 22) {
+    return 3;
+  }
+  if(day < 29) {
+    return 4;
+  }
+  return 5;
+}
+
+function formatOrdinal(number) {
+  if (number == 1) {
+    return "1st";
+  }
+  if (number == 2) {
+    return "2nd";
+  }
+  if (number == 3) {
+    return "3rd";
+  }
+  return number + "th";
+}
+
+function formatWeekInMonth(whichWeek, day) {
+  text = "<font size='-1'>";
+  text += " (" + whichWeek + " ";
+  text += days[day];
+  text += " this month)";
+  text += "</font>";
+  return text;
+}
+</script>
+
+</head>
+<body onload="go()">
+    <table>
+      <tr>
+        <td>No warranty, there may be minor errors...</td>
+      </tr>
+      <tr>
+        <td>Local time:</td><td><span id="current"></span></td>
+      </tr>
+      <tr>
+        <td>GMT:</td><td><span id="uct"></span></td>
+      </tr>
+    </table>
+  <br/>
+    <table border="1">
+      <tbody>
+        <tr>
+          <th>&nbsp;</th>
+          <th align="left" valign="bottom">Programme<br/>Station</th>
+          <th align="left" valign="bottom">Stream</th>
+          <th align="left" nowrap="nowrap" valign="bottom">time until next show</th>
+          <td align="left" nowrap="nowrap">Vancouver<br/>Los Angeles<br/><font size="-1">PST / UTC-8</font></td>
+          <td align="left" nowrap="nowrap">New York<br/>Kingston<br/><font size="-1">EST / UTC-5</font></td>
+          <td align="left" nowrap="nowrap">London<br/>Dublin<br/><font size="-1">GMT / UTC</font></td>
+          <td align="left" nowrap="nowrap">Stuttgart<br/>Skaska<br/><font size="-1">CET / UTC+1</font></td>
+          <td align="left" nowrap="nowrap">St. Petersburg<br/>Москва<br/><font size="-1">MSK / UTC+3</font></td>
+          <td align="left" nowrap="nowrap">Tokyo<br/>Perth<br/><font size="-1">JST / UTC+9</font></td>
+          <td align="left" nowrap="nowrap">Melbourne<br/>Sydney<br/><font size="-1">AEST / UTC+10</font></td>
+        </tr>
+        <tr>
+          <td valign="top">Monday</td>
+          <td valign="top"><a href="http://www.freewebs.com/skapatrol">Ska Patrol<br/><a href="http://www.nearfm.ie">NEAR fm 90.3</a></td>
+          <td valign="top"><a href="http://giss.tv:8001/nearfm.mp3.m3u">mp3</a></td>
+          <td valign="top"><p style="text-align:center" id="skapatrol">
+          <td valign="top" nowrap="nowrap" align="center">12 - 14</td>
+          <td valign="top" nowrap="nowrap" align="center">15 - 17</td>
+          <td valign="top" nowrap="nowrap" align="center"><b>20 - 22</b></td>
+          <td valign="top" nowrap="nowrap" align="center">21 - 23</td>
+          <td valign="top" nowrap="nowrap" align="center">23 - 01</td>
+          <td valign="top" nowrap="nowrap" align="center">05 - 07<br/><font size="-1">Tuesday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">06 - 08<br/><font size="-1">Tuesday</font></td>
+        </tr>
+        <tr>
+          <td valign="top">Wednesday</td>
+          <td valign="top"><a href="  http://www.myspace.com/ckutrootsrockrebel">Roots Rock Rebel</a><br/><a href="http://www.ckut.ca">CKUT</a></td>
+          <td valign="top"><a href="http://www.ckut.ca/vorbis-q6.pls">vorbis-q6.pls</a><br/><a href="http://www.ckut.ca:8000/ckut-live.ogg.m3u">ogg</a></td>
+          <td valign="top"><p style="text-align:center" id="ckut">
+          <td valign="top" nowrap="nowrap" align="center">19 - 21</td>
+          <td valign="top" nowrap="nowrap" align="center"><b>22 - 24</b></td>
+          <td valign="top" nowrap="nowrap" align="center">03 - 05<br/><font size="-1">Thursday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">04 - 06<br/><font size="-1">Thursday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">06 - 08<br/><font size="-1">Thursday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">12 - 14<br/><font size="-1">Thursday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">13 - 15<br/><font size="-1">Thursday</font></td>
+        </tr>
+        <tr>
+          <td valign="top">Wednesday</td>
+          <td valign="top"><a href="http://www.wueste-welle.de/index.php?option=com_content&task=view&id=99">Rudeboy's Delight</a><br/><a href="http://www.wueste-welle.de">Wüste Welle</a></td>
+          <td valign="top"><a href="http://ww-baustelle.de/audiostream/manual.php">various formats</a></td>
+          <td valign="top"><p style="text-align:center" id="rd"></p></td>
+          <td valign="top" nowrap="nowrap" align="center">13 - 14</td>
+          <td valign="top" nowrap="nowrap" align="center">16 - 18</td>
+          <td valign="top" nowrap="nowrap" align="center">21 - 26</td>
+          <td valign="top" nowrap="nowrap" align="center"><b>22 - 23</b></td>
+          <td valign="top" nowrap="nowrap" align="center">00 - 01<br/><font size="-1">Friday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">06 - 07<br/><font size="-1">Friday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">07 - 08<br/><font size="-1">Friday</font></td>
+        </tr>
+        <tr>
+          <td valign="top">Friday</td>
+          <td valign="top"><a href="http://www.file-under-ska.de">File Under Ska</a><br/><a href="http://www.freies-radio.de">Freies Radio für Stuttgart</a></td>
+          <td valign="top"><a href="http://streaming.freies-radio.de:8000/listen.m3u?src=1">mp3</a></td>
+          <td valign="top"><p style="text-align:center" id="fus"></p></td>
+          <td valign="top" nowrap="nowrap" align="center">11 - 12</td>
+          <td valign="top" nowrap="nowrap" align="center">14 - 15</td>
+          <td valign="top" nowrap="nowrap" align="center">19 - 20</td>
+          <td valign="top" nowrap="nowrap" align="center"><b>20 - 21</b></td>
+          <td valign="top" nowrap="nowrap" align="center">22 - 23</td>
+          <td valign="top" nowrap="nowrap" align="center">04 - 05<br/><font size="-1">Saturday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">05 - 06<br/><font size="-1">Saturday</font></td>
+        </tr>
+        <tr>
+          <td valign="top">Friday</td>
+          <td valign="top"><a href="http://www.myspace.com/ska_t_scene_ik_drive" target="_blank">Ska-T's Scene-ik Drive Radio</a><br/><a href="http://www.citr.ca/index.php/shows/profiles/#S" target="_blank">CiTR</a></td>
+          <td valign="top"><a href="http://www.citr.ca/index.php/listen/" target="_blank">Player</a></td>
+          <td valign="top"><p style="text-align:center" id="citr"></p></td>
+          <td valign="top" nowrap="nowrap" align="center"><b>10 - 12</b></td>
+          <td valign="top" nowrap="nowrap" align="center">13 - 15</td>
+          <td valign="top" nowrap="nowrap" align="center">18 - 20</td>
+          <td valign="top" nowrap="nowrap" align="center">19 - 21</td>
+          <td valign="top" nowrap="nowrap" align="center">21 - 23</td>
+          <td valign="top" nowrap="nowrap" align="center">03 - 05<br/><font size="-1">Saturday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">04 - 06<br/><font size="-1">Saturday</font></td>
+        </tr>
+        <tr>
+          <td valign="top">Sunday<br/><font size="-1">2<sup>nd</sup>, 4<sup>th</sup></font></td>
+          <td valign="top"><a href="http://www.freedomsounds.de/sites/s-start.html" target="_blank">Freedom Sounds</a><br/><a href="http://www.radioflora.de" target="_blank">Radio Flora</a></td>
+          <td valign="top"><a href="http://212.48.125.69:8760/listen.pls">mp3</a></td>
+          <td valign="top"><p style="text-align:center" id="freedom"></p></td>
+          <td valign="top" nowrap="nowrap" align="center">13 - 14</td>
+          <td valign="top" nowrap="nowrap" align="center">16 - 17</td>
+          <td valign="top" nowrap="nowrap" align="center">21 - 22</td>
+          <td valign="top" nowrap="nowrap" align="center"><b>22 - 23</b></td>
+          <td valign="top" nowrap="nowrap" align="center">00 - 01<br/><font size="-1">Monday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">06 - 07<br/><font size="-1">Monday</font></td>
+          <td valign="top" nowrap="nowrap" align="center">07 - 08<br/><font size="-1">Monday</font></td>
+        </tr>
+        <tr>
+          <td valign="top">24/7</td>
+          <td valign="top"><a href="http://www.turnuptheska.com/" target="_blank">Turn Up The Ska</a></td>
+          <td valign="top"><a href="http://64.20.36.156:8003/listen.pls">mp3</a></td>
+          <td valign="top" nowrap="nowrap" align="center" colspan="8">&nbsp;</td>
+        </tr>
+        <tr>
+          <td valign="top">24/7</td>
+          <td valign="top"><a href="http://www.skaparade.com/" target="_blank">Ska Parade</a></td>
+          <td valign="top"><a href="http://www.skaparade.com/play.pls">mp3</a></td>
+          <td valign="top" nowrap="nowrap" align="center" colspan="8">&nbsp;</td>
+        </tr>
+        <tr>
+          <td valign="top">24/7</td>
+          <td valign="top"><a href="http://www.skankmanradio.de/" target="_blank">Skankman Radio</a></td>
+          <td valign="top"><a href="http://streamplus40.leonex.de:42350">mp3</a></td>
+          <td valign="top" nowrap="nowrap" align="center" colspan="8">&nbsp;</td>
+        </tr>
+        <tr>
+          <td valign="top">24/7</td>
+          <td valign="top"><a href="http://www.braapradio.co.uk/" target="_blank">Braap Radio</a></td>
+          <td valign="top"><a href="http://s18.myradiostream.com:12250/">mp3</a></td>
+          <td valign="top" nowrap="nowrap" align="center" colspan="8">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+<!--
+    24/7: Easy Skanking <a href="http://www.easyskanking.tk/">Homepage</a> <a href="http://64.20.36.156:8003/listen.pls">Stream (Winamp)</a><br/>
+-->
+    <p>
+    Once a month: <a href="http://www.upsettingstation.tk/">Upsetting Station</a> (<a href="http://www.fsk-hh.org/">Freies Sender-Kombinat Hamburg</a>)
+  </body>
+</html>
