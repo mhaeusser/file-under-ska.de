@@ -66,8 +66,9 @@ Also check out <a href="http://www.motorcityrock.de/">motorcityrock.de</a>, <a h
 function myFunction() {
   const x = document.getElementById("mySelect").value;
 
-  for (var year = 2003; year <= 2023; year++) {
-    document.getElementById(year).style.display = (year == x) ? "block" : "none";
+  for (let year = 2003; year <= 2023; year++) {
+    const strYear = year.toString();
+    document.getElementById(strYear).style.display = (strYear == x) ? "block" : "none";
   }
 }
 </script>
