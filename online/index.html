@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head><title>File Under Ska</title></head>
 <body>
@@ -73,8 +73,10 @@ function myFunction() {
   const x = document.getElementById("mySelect").value;
 
   for (let year = 2003; year <= 2023; year++) {
-    const strYear = year.toString();
-    document.getElementById(strYear).style.display = (strYear === x) ? "block" : "none";
+    if (year !== 2020 && year !== 2021) {
+      const strYear = year.toString();
+      document.getElementById(strYear).style.display = (strYear === x) ? "block" : "none";
+    }
   }
 }
 </script>
