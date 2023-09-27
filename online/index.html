@@ -70,12 +70,12 @@ Also check out <a href="http://www.motorcityrock.de/">motorcityrock.de</a>, <a h
 
 <script>
 function showYear() {
-  const x = document.getElementById("yearSelect").value;
+  const selectedYear = document.getElementById("yearSelect").value;
 
   for (let year = 2003; year <= 2023; year++) {
     if (year !== 2020 && year !== 2021) {
       const strYear = year.toString();
-      document.getElementById(strYear).style.display = (strYear === x) ? "block" : "none";
+      document.getElementById(strYear).style.display = (strYear === selectedYear) ? "block" : "none";
     }
   }
 }
