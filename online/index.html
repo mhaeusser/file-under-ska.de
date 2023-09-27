@@ -40,6 +40,7 @@ Also check out <a href="http://www.motorcityrock.de/">motorcityrock.de</a>, <a h
 
 
 <select id="yearSelect" onchange="showYear()">
+  <option value="all">all</option>
   <option value="2003">2003</option>
   <option value="2004">2004</option>
   <option value="2005">2005</option>
@@ -75,7 +76,7 @@ function showYear() {
   for (let year = 2003; year <= 2023; year++) {
     if (year !== 2020 && year !== 2021) {
       const strYear = year.toString();
-      document.getElementById(strYear).style.display = (strYear === selectedYear) ? "block" : "none";
+      document.getElementById(strYear).style.display = (selectedYear === strYear || selectedYear === "all") ? "block" : "none";
     }
   }
 }
