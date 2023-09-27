@@ -39,7 +39,7 @@ Also check out <a href="http://www.motorcityrock.de/">motorcityrock.de</a>, <a h
 </p>
 
 
-<select id="mySelect" onchange="myFunction()">
+<select id="yearSelect" onchange="showYear()">
   <option value="2003">2003</option>
   <option value="2004">2004</option>
   <option value="2005">2005</option>
@@ -63,14 +63,14 @@ Also check out <a href="http://www.motorcityrock.de/">motorcityrock.de</a>, <a h
 
 <script>
     window.onload = function () {
-        myFunction();
+        showYear();
     }
 </script>
 
 
 <script>
-function myFunction() {
-  const x = document.getElementById("mySelect").value;
+function showYear() {
+  const x = document.getElementById("yearSelect").value;
 
   for (let year = 2003; year <= 2023; year++) {
     if (year !== 2020 && year !== 2021) {
