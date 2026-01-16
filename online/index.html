@@ -95,7 +95,7 @@ Also check out <a href="https://www.motorcityrock.de">motorcityrock.de</a>, <a h
 function showYear() {
   const selectedYear = document.getElementById("yearSelect").value;
 
-  for (let year = 2003; year <= 2024; year++) {
+  for (let year = 2003; year <= 2025; year++) {
     if (year !== 2020 && year !== 2021) {
       const strYear = year.toString();
       document.getElementById(strYear).style.display = (selectedYear === strYear || selectedYear === "all") ? "block" : "none";
