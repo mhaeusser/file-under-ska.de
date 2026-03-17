@@ -1,80 +1,92 @@
-  body {
-    font-family: Verdana, sans-serif;
-    margin: 0;
-    background: #f7f7f7;
-    color: #222;
-  }
+.badge {
+display: inline-block;
+background: #f0f0f0; /* light gray background */
+color: #ff6600;      /* modern orange */
+font-weight: bold;
+font-size: 0.8rem;
+padding: 1px 3px;
+border-radius: 4px;
+box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+letter-spacing: 0.5px;
+}
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-  }
+body {
+font-family: Verdana, sans-serif;
+margin: 0;
+background: #f7f7f7;
+color: #222;
+}
 
-  h1 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
+.container {
+max-width: 900px;
+margin: 0 auto;
+padding: 20px;
+background: #fff;
+}
 
-  .subtitle {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #555;
-  }
+h1 {
+text-align: center;
+margin-bottom: 10px;
+}
 
-  .hero {
-    text-align: center;
-    margin: 20px 0;
-  }
+.subtitle {
+text-align: center;
+margin-bottom: 20px;
+color: #555;
+}
 
-  .hero img {
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
+.hero {
+text-align: center;
+margin: 20px 0;
+}
 
-  .info {
-    text-align: center;
-    line-height: 1.6;
-    margin-bottom: 25px;
-  }
+.hero img {
+max-width: 100%;
+border-radius: 8px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
 
-  .info a {
-    color: #ff6600;
-    text-decoration: none;
-  }
+.info {
+text-align: center;
+line-height: 1.6;
+margin-bottom: 25px;
+}
 
-  .info a:hover {
-    text-decoration: underline;
-  }
+.info a {
+color: #ff6600;
+text-decoration: none;
+}
 
-  .section-title {
-    margin-top: 30px;
-    border-bottom: 2px solid #ff6600;
-    padding-bottom: 5px;
-  }
+.info a:hover {
+text-decoration: underline;
+}
 
-  ul.events {
-    list-style: none;
-    padding: 0;
-  }
+.section-title {
+margin-top: 30px;
+border-bottom: 2px solid #ff6600;
+padding-bottom: 5px;
+}
 
-  ul.events li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-  }
+ul.events {
+list-style: none;
+padding: 0;
+}
 
-  ul.events a {
-    color: #ff6600;
-    text-decoration: none;
-  }
+ul.events li {
+padding: 8px 0;
+border-bottom: 1px solid #eee;
+}
 
-  ul.events a:hover {
-    text-decoration: underline;
-  }
+ul.events a {
+color: #ff6600;
+text-decoration: none;
+}
 
-  select {
-    margin: 20px 0;
-    padding: 5px;
-  }
+ul.events a:hover {
+text-decoration: underline;
+}
+
+select {
+margin: 20px 0;
+padding: 5px;
+}
