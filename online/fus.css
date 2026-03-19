@@ -133,7 +133,7 @@ a {
 
 .radio-section {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 20px;
   margin: 20px 0;
@@ -148,6 +148,9 @@ td.left {
   text-align: left;
 }
 
+td.right {
+  text-align: right;
+}
 .radio-image img {
   max-width: 180px;
   height: auto;
@@ -161,8 +164,8 @@ td.nowrap-right {
 /* Mobile behavior */
 @media (max-width: 600px) {
   .radio-section {
-    flex-direction: column;
-    text-align: center;
+    display: flex;
+    align-items: flex-start;
   }
 
   .radio-text {
