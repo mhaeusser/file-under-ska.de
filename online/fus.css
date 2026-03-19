@@ -140,9 +140,18 @@ a {
   text-align: left;
 }
 
+td.left {
+  text-align: left;
+}
+
 .radio-image img {
   max-width: 180px;
   height: auto;
+}
+
+td.nowrap-right {
+  white-space: nowrap;
+  text-align: right;
 }
 
 /* Mobile behavior */
