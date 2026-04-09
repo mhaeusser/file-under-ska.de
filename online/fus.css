@@ -176,3 +176,18 @@ td.nowrap-right {
     max-width: 70%;
   }
 }
+.header-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-logo {
+  height: 90px;
+}
