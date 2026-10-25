@@ -99,7 +99,7 @@ Also check out <a href="https://www.motorcityrock.de">Motor City Rock</a>, <a hr
 function showYear() {
   const selectedYear = document.getElementById("yearSelect").value;
 
-  for (let year = 2003; year <= 2025; year++) {
+  for (let year = 2003; year <= 2026; year++) {
     if (year !== 2020 && year !== 2021) {
       const strYear = year.toString();
       document.getElementById(strYear).style.display = (selectedYear === strYear || selectedYear === "all") ? "block" : "none";
